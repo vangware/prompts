@@ -1,0 +1,6 @@
+skip_output:
+    - meta
+pre-push:
+    commands:
+        "git:pre-push":
+            run: $(pwd)/node_modules/.bin/run-s git:pre-push
