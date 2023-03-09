@@ -1,7 +1,7 @@
 {
 	"name": "@vangware/prompts",
 	"description": "❓ CLI interactive prompts",
-	"version": "1.0.2",
+	"version": "1.0.3",
 	"author": {
 		"email": "hello@vangware.com",
 		"name": "Vangware",
