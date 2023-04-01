@@ -26,15 +26,16 @@ And then:
 import { question } from "@vangware/prompts";
 import { createInterface } from "node:readline/promises";
 
-const readlineInterface = createInterface({
-	input: process.stdin,
-	output: process.stdout,
-});
+const exampleQuestion = question(
+	createInterface({
+		input: process.stdin,
+		output: process.stdout,
+	}),
+);
 
-question({
+exampleQuestion({
 	format: value => parseInt(value, 18),
 	query: "How old are you?",
-	readlineInterface,
 	validate: value => (value < 18 ? "You must be at least 18 years old." : ""),
 })
 	.then(console.log)
