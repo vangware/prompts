@@ -2,11 +2,11 @@ import type { Tests } from "@vangware/test";
 import type { Interface } from "node:readline/promises";
 import { question } from "../src/question.js";
 
-const readlineInterface = {
+const testQuestion = question({
 	question: (response: string) => Promise.resolve(response.trim()),
-} as Interface;
+} as Interface);
 
-const readlineInterfaceRetry = {
+const testQuestionRetry = question({
 	// eslint-disable-next-line prefer-arrow/prefer-arrow-functions
 	question(response: string) {
 		return Promise.resolve(
@@ -15,16 +15,15 @@ const readlineInterfaceRetry = {
 		);
 	},
 	tries: 0,
-} as unknown as Interface;
+} as unknown as Interface);
 
 export default [
 	{
 		given: "a plain question with a mock readline interface",
 		must: "get the answer back",
 		received: () =>
-			question({
+			testQuestion({
 				query: "Vangware",
-				readlineInterface,
 			}),
 		wanted: () => "Vangware",
 	},
@@ -32,9 +31,8 @@ export default [
 		given: "a question with a passing validation and a mock readline interface",
 		must: "get the answer back",
 		received: () =>
-			question({
+			testQuestion({
 				query: "Vangware",
-				readlineInterface,
 				validate: () => "",
 			}),
 		wanted: () => "Vangware",
@@ -43,9 +41,8 @@ export default [
 		given: "a question with a failing validation and a mock readline interface",
 		must: "get the error back",
 		received: () =>
-			question({
+			testQuestion({
 				query: "Vangware",
-				readlineInterface,
 				validate: () => "Error",
 			}).catch((error: string) => error),
 		wanted: () => "Error",
@@ -54,10 +51,9 @@ export default [
 		given: "a question with formatting and a mock readline interface",
 		must: "get the answer back",
 		received: () =>
-			question({
+			testQuestion({
 				format: value => value.toLocaleUpperCase("en-US"),
 				query: "Vangware",
-				readlineInterface,
 			}),
 		wanted: () => "VANGWARE",
 	},
@@ -65,10 +61,9 @@ export default [
 		given: "a question with formatting, a passing validation and a mock readline interface",
 		must: "get the answer back",
 		received: () =>
-			question({
+			testQuestion({
 				format: value => value.toLocaleUpperCase("en-US"),
 				query: "Vangware",
-				readlineInterface,
 				validate: () => "",
 			}),
 		wanted: () => "VANGWARE",
@@ -77,10 +72,9 @@ export default [
 		given: "a question with formatting, a failing validation and a mock readline interface",
 		must: "get the answer back",
 		received: () =>
-			question({
+			testQuestion({
 				format: value => value.toLocaleUpperCase("en-US"),
 				query: "Vangware",
-				readlineInterface,
 				validate: value => `Error ${value}`,
 			}).catch((error: string) => error),
 		wanted: () => "Error VANGWARE",
@@ -89,10 +83,9 @@ export default [
 		given: "a question with formatting, a failing validation, a retry and a mock readline interface",
 		must: "get the answer back",
 		received: () =>
-			question({
+			testQuestionRetry({
 				format: value => value.toLocaleUpperCase("en-US"),
 				query: "not ok",
-				readlineInterface: readlineInterfaceRetry,
 				retry: true,
 				validate: value => (value !== "OK" ? `Error ${value}` : ""),
 			}),

@@ -1,4 +1,4 @@
-import type { Interface } from "node:readline/promises";
+import type { Maybe, Unary } from "@vangware/types";
 
 /**
  * Options object for the `question` function.
@@ -17,15 +17,11 @@ export type QuestionOptions<FormattedValue = string> = {
 	 * @param value The question's answer given by the user.
 	 * @returns Formatted value.
 	 */
-	readonly format?: (value: string) => FormattedValue;
+	readonly format?: Unary<string, FormattedValue>;
 	/**
 	 * Query to show to the user.
 	 */
 	readonly query: string;
-	/**
-	 * Node's `readline` interface.
-	 */
-	readonly readlineInterface: Interface;
 	/**
 	 * Whether to retry the question if the answer is invalid.
 	 */
@@ -44,5 +40,5 @@ export type QuestionOptions<FormattedValue = string> = {
 	 * @param value The question's answer given by the user.
 	 * @returns Either an error, an empty string or undefined.
 	 */
-	readonly validate?: (value: FormattedValue) => string | undefined;
+	readonly validate?: Unary<FormattedValue, Maybe<string>>;
 };
