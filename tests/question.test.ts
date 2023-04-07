@@ -1,21 +1,25 @@
 import type { Tests } from "@vangware/test";
-import type { Interface } from "node:readline/promises";
 import { question } from "../src/question.js";
 
 const testQuestion = question({
 	question: (response: string) => Promise.resolve(response.trim()),
-} as Interface);
+});
 
-const testQuestionRetry = question({
-	// eslint-disable-next-line prefer-arrow/prefer-arrow-functions
-	question(response: string) {
-		return Promise.resolve(
-			// eslint-disable-next-line functional/immutable-data, no-plusplus
-			(this as { tries: number }).tries++ < 1 ? response.trim() : "ok",
-		);
-	},
-	tries: 0,
-} as unknown as Interface);
+const testQuestionRetry = question(
+	(() => {
+		// eslint-disable-next-line functional/no-let
+		let tries = 0;
+
+		return {
+			// eslint-disable-next-line prefer-arrow/prefer-arrow-functions
+			question: (response: string) =>
+				Promise.resolve(
+					// eslint-disable-next-line functional/immutable-data, no-plusplus
+					tries++ < 1 ? response.trim() : "ok",
+				),
+		};
+	})(),
+);
 
 export default [
 	{

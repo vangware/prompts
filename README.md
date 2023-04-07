@@ -3,9 +3,8 @@
 ![Coverage][coverage-badge] ![License][license-badge]
 ![NPM Version][npm-version-badge] ![Open Issues][open-issues-badge]
 
-❓ CLI interactive prompts. Currently just wrapping the `question` method of
-Node's `readline` module. This obviously makes this package "Node only", even if
-it uses ESM.
+❓ CLI interactive prompts. Can be used to wrap anything that matches the
+interface of Node's question.
 
 ## Usage
 
@@ -41,6 +40,24 @@ exampleQuestion({
 	.then(console.log)
 	.catch(console.error)
 	.finally(() => readlineInterface.close());
+```
+
+Can be used in a browser environment by emulating the Node API. For example:
+
+```js
+import { question } from "https://esm.sh/@vangware/prompts";
+
+const exampleQuestion = question({
+	question: query => Promise.resolve(prompt(query)),
+});
+
+exampleQuestion({
+	format: value => parseInt(value, 18),
+	query: "How old are you?",
+	validate: value => (value < 18 ? "You must be at least 18 years old." : ""),
+})
+	.then(console.log)
+	.catch(console.error);
 ```
 
 ## Documentation

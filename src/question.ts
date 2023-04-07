@@ -1,4 +1,4 @@
-import type { Interface } from "node:readline/promises";
+import type { QuestionObject } from "./QuestionObject.js";
 import type { QuestionOptions } from "./QuestionOptions.js";
 
 /**
@@ -22,13 +22,14 @@ import type { QuestionOptions } from "./QuestionOptions.js";
  * 	validate: value => (value < 18 ? "You must be at least 18 years old." : ""),
  * }).then(console.log).catch(console.error);
  * ```
+ * @see {@link QuestionObject}
  * @see {@link QuestionOptions}
  *
- * @param readlineInterface Readline interface to use (from node or mocked).
+ * @param questionObject Object with a question function that returns a promise.
  * @returns Curried function with `readlineInterface` set in context.
  */
 export const question =
-	(readlineInterface: Interface) =>
+	(questionObject: QuestionObject) =>
 	/**
 	 * Interactive question with `readlineInterface` set in context.
 	 *
@@ -44,7 +45,7 @@ export const question =
 		retry = false,
 		validate,
 	}: QuestionOptions<FormattedValue>): Promise<FormattedValue> =>
-		readlineInterface.question(`${query} `).then(value => {
+		questionObject.question(`${query} `).then(value => {
 			const formattedValue = (
 				format !== undefined ? format(value) : value
 			) as FormattedValue;
@@ -52,7 +53,7 @@ export const question =
 
 			return validationError
 				? retry
-					? question(readlineInterface)({
+					? question(questionObject)({
 							format,
 							query: validationError,
 							retry,
