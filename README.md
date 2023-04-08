@@ -3,7 +3,7 @@
 ![Coverage][coverage-badge] ![License][license-badge]
 ![NPM Version][npm-version-badge] ![Open Issues][open-issues-badge]
 
-❓ CLI interactive prompts. Can be used to wrap anything that matches the
+⁉️ CLI interactive prompts. Can be used to wrap anything that matches the
 interface of Node's question.
 
 ## Usage
