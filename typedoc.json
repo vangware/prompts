@@ -3,5 +3,5 @@
 	"cname": "prompts.vangware.com",
 	"entryPoints": ["./src"],
 	"extends": ["@vangware/configs/typedoc.json"],
-	"name": "@vangware/prompts"
+	"name": "Prompts by Vangware"
 }
