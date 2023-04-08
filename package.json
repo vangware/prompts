@@ -58,7 +58,7 @@
 		"prepare": "lefthook install",
 		"prepublishOnly": "run-s --print-label clean compile prettify",
 		"prettify": "prettier --write --loglevel warn './dist/**/*.{js,ts}'",
-		"test": "NODE_OPTIONS='--loader ts-node/esm' c8 test"
+		"test": "NODE_OPTIONS='--loader ts-node/esm --no-warnings' c8 test"
 	},
 	"sideEffects": false,
 	"type": "module",
