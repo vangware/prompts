@@ -1,5 +1,7 @@
 name: Test & Coverage
+
 on: [push]
+
 jobs:
     build:
         name: Build
@@ -19,7 +21,7 @@ jobs:
                   version: 8.x
                   run_install: true
 
-            - name: Run tests`
+            - name: Run tests
               run: pnpm test
 
             - name: Use Coveralls
