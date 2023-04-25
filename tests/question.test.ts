@@ -95,4 +95,4 @@ export default [
 			}),
 		wanted: () => "OK",
 	},
-] as Tests<string>;
+] satisfies Tests<string>;
