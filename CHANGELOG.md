@@ -5,6 +5,11 @@ All notable changes to this project will be documented in this file.
 -   This project adheres to [Semantic Versioning][semver].
 -   This project uses [Gitmoji][gitmoji]
 
+## 2.1.6
+
+-   ⬆️ dependency upgrade.
+-   🔧 update `engines` to suggest `node@>=20` and `pnpm@>=8`.
+
 ## 2.1.5
 
 -   ⬆️ dependency upgrade.
