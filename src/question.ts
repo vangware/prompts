@@ -26,12 +26,12 @@ import type { QuestionOptions } from "./QuestionOptions.js";
  * @see {@link QuestionOptions}
  *
  * @param questionObject Object with a question function that returns a promise.
- * @returns Curried function with `readlineInterface` set in context.
+ * @returns Curried function with `questionObject` set in context.
  */
 export const question =
 	(questionObject: QuestionObject) =>
 	/**
-	 * Interactive question with `readlineInterface` set in context.
+	 * Interactive question with `questionObject` set in context.
 	 *
 	 * @see {@link question}
 	 *

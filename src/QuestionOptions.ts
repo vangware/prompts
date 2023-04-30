@@ -14,18 +14,21 @@ export type QuestionOptions<FormattedValue = string> = {
 	 * 	format: value => parseInt(value, 18),
 	 * }
 	 * ```
-	 * @param value The question's answer given by the user.
+	 * @param input The question's answer given by the user.
 	 * @returns Formatted value.
 	 */
 	readonly format?: Unary<string, FormattedValue>;
+
 	/**
 	 * Query to show to the user.
 	 */
 	readonly query: string;
+
 	/**
 	 * Whether to retry the question if the answer is invalid.
 	 */
 	readonly retry?: boolean;
+
 	/**
 	 * Function to validate the question's answer given by the user (after formatting).
 	 * Returning an string will be used to reject with an error, while an empty
@@ -37,7 +40,7 @@ export type QuestionOptions<FormattedValue = string> = {
 	 * 	validate: value => value % 2 === 0,
 	 * }
 	 * ```
-	 * @param value The question's answer given by the user.
+	 * @param input The question's answer given by the user.
 	 * @returns Either an error, an empty string or undefined.
 	 */
 	readonly validate?: Unary<FormattedValue, Maybe<string>>;
