@@ -12,13 +12,13 @@
 		"url": "https://github.com/vangware/prompts/issues"
 	},
 	"dependencies": {
-		"@vangware/types": "^6.0.1"
+		"@vangware/types": "^6.0.2"
 	},
 	"devDependencies": {
 		"@evilmartians/lefthook": "^1.4.3",
-		"@types/node": "^20.3.3",
-		"@vangware/configs": "^4.3.13",
-		"@vangware/test": "^10.3.7",
+		"@types/node": "^20.4.0",
+		"@vangware/configs": "^4.3.15",
+		"@vangware/test": "^10.3.8",
 		"c8": "^8.0.0",
 		"eslint": "^8.44.0",
 		"npm-run-all": "^4.1.5",
