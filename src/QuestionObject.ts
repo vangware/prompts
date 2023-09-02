@@ -1,3 +1,5 @@
+import type { Awaitable } from "@vangware/types";
+
 /**
  * Question object.
  *
@@ -12,5 +14,5 @@ export type QuestionObject = {
 	 * @param query Question to ask.
 	 * @returns Promise with the answer.
 	 */
-	readonly question: (query: string) => Promise<string>;
+	readonly question: (query: string) => Awaitable<string>;
 };

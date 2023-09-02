@@ -5,6 +5,10 @@ const testQuestion = question({
 	question: (response: string) => Promise.resolve(response.trim()),
 });
 
+const testQuestionNoPromise = question({
+	question: (response: string) => response.trim(),
+});
+
 const testQuestionRetry = question(
 	(() => {
 		// eslint-disable-next-line functional/no-let
@@ -27,6 +31,15 @@ export default [
 		must: "get the answer back",
 		received: () =>
 			testQuestion({
+				query: "Vangware",
+			}),
+		wanted: () => "Vangware",
+	},
+	{
+		given: "a plain question with a mock readline interface that returns a string without a promise",
+		must: "get the answer back",
+		received: () =>
+			testQuestionNoPromise({
 				query: "Vangware",
 			}),
 		wanted: () => "Vangware",
