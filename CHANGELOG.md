@@ -5,6 +5,11 @@ All notable changes to this project will be documented in this file.
 -   This project adheres to [Semantic Versioning][semver].
 -   This project uses [Gitmoji][gitmoji]
 
+## 2.2.0
+
+-   ⬆️ dependency upgrade.
+-   🏗️ question function can return a plain value now, not just a promise.
+
 ## 2.1.26
 
 -   ⬆️ dependency upgrade.

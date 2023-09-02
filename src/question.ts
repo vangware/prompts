@@ -45,7 +45,7 @@ export const question =
 		retry = false,
 		validate,
 	}: QuestionOptions<FormattedValue>): Promise<FormattedValue> =>
-		questionObject.question(`${query} `).then(value => {
+		Promise.resolve(questionObject.question(`${query} `)).then(value => {
 			const formattedValue = (
 				format !== undefined ? format(value) : value
 			) as FormattedValue;
