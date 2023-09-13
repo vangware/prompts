@@ -2,6 +2,6 @@
 	"$schema": "https://typedoc.org/schema.json",
 	"cname": "prompts.vangware.com",
 	"entryPoints": ["./src"],
-	"extends": ["@vangware/configs/typedoc.json"],
+	"extends": ["@vangware/configs/typedoc.config.json"],
 	"name": "Prompts by Vangware"
 }

@@ -157,6 +157,9 @@ $RECYCLE.BIN/
 # Distribution directory
 dist/
 
+# Documentation
+docs/
+
 # Lock files
 bun.lockb
 package-lock.json
